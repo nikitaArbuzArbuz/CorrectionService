@@ -1,11 +1,11 @@
-package ru.t1.java.correctionservice.service.impl;
+package ru.t1.java.correctionservice.app.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import ru.t1.java.correctionservice.feign.FeignClientService;
-import ru.t1.java.correctionservice.service.TransactionService;
+import ru.t1.java.correctionservice.adapter.feign.FeignClientService;
+import ru.t1.java.correctionservice.app.service.TransactionService;
 
 @Service
 @RequiredArgsConstructor

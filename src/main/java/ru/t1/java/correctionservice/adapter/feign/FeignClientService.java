@@ -1,4 +1,4 @@
-package ru.t1.java.correctionservice.feign;
+package ru.t1.java.correctionservice.adapter.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import ru.t1.java.correctionservice.dto.TransactionDto;
+import ru.t1.java.correctionservice.app.domain.dto.TransactionDto;
 
 import java.util.List;
 

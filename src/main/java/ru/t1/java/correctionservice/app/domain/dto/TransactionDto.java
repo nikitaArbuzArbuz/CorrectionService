@@ -1,4 +1,4 @@
-package ru.t1.java.correctionservice.dto;
+package ru.t1.java.correctionservice.app.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;
