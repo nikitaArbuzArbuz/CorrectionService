@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import ru.t1.java.correctionservice.app.domain.dto.TransactionDto;
-import ru.t1.java.correctionservice.adapter.feign.FeignClientService;
-
-import java.util.List;
+import ru.t1.java.correctionservice.adapter.feign.FeignClientService;;
 
 @Service
 @Slf4j
@@ -17,7 +14,7 @@ public class TransactionRetryService {
 
     @Scheduled(fixedDelayString = "${retry.interval.ms}")
     public void retryUnblockTransactions() {
-        List<TransactionDto> listTransactions = feignClientService.getCanceledTransactions();
-        listTransactions.forEach(feignClientService::createTransaction);
+        feignClientService.getCanceledTransactions()
+                .forEach(feignClientService::createTransaction);
     }
 }

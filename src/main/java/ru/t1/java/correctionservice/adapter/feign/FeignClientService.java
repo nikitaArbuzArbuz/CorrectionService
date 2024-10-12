@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.t1.java.correctionservice.app.domain.dto.TransactionDto;
+import ru.t1.java.correctionservice.config.FeignConfig;
 
 import java.util.List;
 
-@FeignClient(name = "clientService", url = "http://localhost:8080/api")
+@FeignClient(name = "clientService", url = "${service.client-service", configuration = FeignConfig.class)
 public interface FeignClientService {
     @PostMapping("/account/unblock/{transactionId}")
     ResponseEntity<String> unblockAccount(@PathVariable Long transactionId);
