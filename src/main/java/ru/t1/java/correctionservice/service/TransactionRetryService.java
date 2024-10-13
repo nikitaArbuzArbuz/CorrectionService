@@ -20,9 +20,9 @@ public class TransactionRetryService {
 
     @Scheduled(fixedDelayString = "${retry.interval.ms}")
     public void retryUnblockTransactions() {
-        transactionErrorRepository.findAll()
-                .stream()
-                .map(TransactionError::getTransactionId)
-                .forEach(feignClientService::unblockAccount);;
+//        transactionErrorRepository.findAll()
+//                .stream()
+//                .map(TransactionError::getTransactionId)
+//                .forEach(feignClientService::unblockAccount);;
     }
 }

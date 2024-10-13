@@ -22,6 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void unblockAccount(Long transactionId) {
+        System.out.println(transactionId);
         ResponseEntity<TransactionErrorDto> response = feignClientService.unblockAccount(transactionId);
         if (response.getStatusCode().is2xxSuccessful()) {
             transactionErrorRepository.deleteByTransactionId(transactionId);
