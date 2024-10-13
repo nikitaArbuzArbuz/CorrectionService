@@ -43,3 +43,6 @@ spring:
 retry:
   interval:
     ms: 60000
+
+service:
+  client-service: http://localhost:8080/api
