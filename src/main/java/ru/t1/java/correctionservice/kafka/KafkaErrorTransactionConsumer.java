@@ -20,7 +20,7 @@ public class KafkaErrorTransactionConsumer {
     }
 
     private void listener(Long messageId) {
-        transactionService.unblockAccount(messageId);
         log.info("Информация о транзакции с ID {} отправлена на обработку", messageId);
+        transactionService.unblockAccount(messageId);
     }
 }

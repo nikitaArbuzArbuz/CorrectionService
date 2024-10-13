@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import ru.t1.java.correctionservice.utils.exceptions.FeignBadRequestException;
 import ru.t1.java.correctionservice.dto.TransactionErrorDto;
 import ru.t1.java.correctionservice.entity.TransactionError;
 import ru.t1.java.correctionservice.feign.FeignClientService;
@@ -22,20 +23,26 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void unblockAccount(Long transactionId) {
-        System.out.println(transactionId);
-        ResponseEntity<TransactionErrorDto> response = feignClientService.unblockAccount(transactionId);
-        if (response.getStatusCode().is2xxSuccessful()) {
-            transactionErrorRepository.deleteByTransactionId(transactionId);
-            log.info("Счёт разблокирован, id транзакции: {}", transactionId);
-        } else {
-            TransactionError transactionError = transactionErrorMapper.map(response.getBody())
+        try {
+            ResponseEntity<TransactionErrorDto> response = feignClientService.unblockAccount(transactionId);
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                transactionErrorRepository.deleteByTransactionId(transactionId);
+                log.info("Счёт разблокирован, id транзакции: {}", transactionId);
+            }
+        } catch (FeignBadRequestException ex) {
+            TransactionErrorDto errorDto = ex.getErrorDto();
+            log.warn("Ошибка при разблокировке, код ответа: 400, id транзакции: {}", transactionId);
+
+            TransactionError transactionError = transactionErrorMapper.map(errorDto)
                     .setTransactionId(transactionId);
+
             try {
                 transactionErrorRepository.saveAndFlush(transactionError);
+                log.info("Информация об ошибочной транзакции записана в БД, id транзакции: {}", transactionId);
             } catch (DataIntegrityViolationException e) {
-                log.info("Transaction error with id {} already exists.", transactionId);
+                log.error("Ошибка при записи ошибки в БД, id транзакции: {}, ошибка: {}", transactionId, e.getMessage());
             }
-            log.info("Информация об ошибочной транзакции записана в бд, id транзакции: {}", transactionId);
         }
     }
 }
