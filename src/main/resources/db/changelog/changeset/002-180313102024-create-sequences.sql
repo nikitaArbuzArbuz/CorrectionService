@@ -1,0 +1,1 @@
+CREATE SEQUENCE IF NOT EXISTS t1_demo_correction.transact_err_seq START WITH 1 INCREMENT BY 50;

@@ -1,10 +1,10 @@
-package ru.t1.java.correctionservice.adapter.kafka;
+package ru.t1.java.correctionservice.kafka;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import ru.t1.java.correctionservice.app.service.TransactionService;
+import ru.t1.java.correctionservice.service.TransactionService;
 
 import java.util.function.Consumer;
 
