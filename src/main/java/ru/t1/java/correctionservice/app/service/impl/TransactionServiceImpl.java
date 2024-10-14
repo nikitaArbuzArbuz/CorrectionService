@@ -1,4 +1,4 @@
-package ru.t1.java.correctionservice.service.impl;
+package ru.t1.java.correctionservice.app.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,12 +6,12 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.t1.java.correctionservice.utils.exceptions.FeignBadRequestException;
-import ru.t1.java.correctionservice.dto.TransactionErrorDto;
-import ru.t1.java.correctionservice.entity.TransactionError;
-import ru.t1.java.correctionservice.feign.FeignClientService;
-import ru.t1.java.correctionservice.mapper.TransactionErrorMapper;
-import ru.t1.java.correctionservice.repository.TransactionErrorRepository;
-import ru.t1.java.correctionservice.service.TransactionService;
+import ru.t1.java.correctionservice.app.domain.dto.TransactionErrorDto;
+import ru.t1.java.correctionservice.app.domain.entity.TransactionError;
+import ru.t1.java.correctionservice.adapter.feign.FeignClientService;
+import ru.t1.java.correctionservice.app.mapper.TransactionErrorMapper;
+import ru.t1.java.correctionservice.adapter.repository.TransactionErrorRepository;
+import ru.t1.java.correctionservice.app.service.TransactionService;
 
 @Service
 @RequiredArgsConstructor

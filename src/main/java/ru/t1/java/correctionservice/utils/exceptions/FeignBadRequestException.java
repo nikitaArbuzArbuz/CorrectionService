@@ -1,6 +1,6 @@
 package ru.t1.java.correctionservice.utils.exceptions;
 
-import ru.t1.java.correctionservice.dto.TransactionErrorDto;
+import ru.t1.java.correctionservice.app.domain.dto.TransactionErrorDto;
 
 public class FeignBadRequestException extends RuntimeException {
     private final int status;

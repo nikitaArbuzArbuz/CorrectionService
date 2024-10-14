@@ -1,15 +1,12 @@
-package ru.t1.java.correctionservice.service;
+package ru.t1.java.correctionservice.app.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import ru.t1.java.correctionservice.dto.TransactionErrorDto;
-import ru.t1.java.correctionservice.entity.TransactionError;
-import ru.t1.java.correctionservice.feign.FeignClientService;
-import ru.t1.java.correctionservice.repository.TransactionErrorRepository;
-
-import java.util.List;
+import ru.t1.java.correctionservice.app.domain.entity.TransactionError;
+import ru.t1.java.correctionservice.adapter.feign.FeignClientService;
+import ru.t1.java.correctionservice.adapter.repository.TransactionErrorRepository;
 
 @Service
 @Slf4j
@@ -23,6 +20,7 @@ public class TransactionRetryService {
         transactionErrorRepository.findAll()
                 .stream()
                 .map(TransactionError::getTransactionId)
-                .forEach(feignClientService::unblockAccount);;
+                .forEach(feignClientService::unblockAccount);
+        log.info("Транзакции отправлены на повторную обработку");
     }
 }

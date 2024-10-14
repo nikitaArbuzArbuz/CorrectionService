@@ -1,4 +1,4 @@
-package ru.t1.java.correctionservice.entity;
+package ru.t1.java.correctionservice.app.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

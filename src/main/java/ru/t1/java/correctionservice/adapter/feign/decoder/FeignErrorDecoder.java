@@ -1,10 +1,10 @@
-package ru.t1.java.correctionservice.feign.decoder;
+package ru.t1.java.correctionservice.adapter.feign.decoder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import org.springframework.http.HttpStatus;
-import ru.t1.java.correctionservice.dto.TransactionErrorDto;
+import ru.t1.java.correctionservice.app.domain.dto.TransactionErrorDto;
 import ru.t1.java.correctionservice.utils.exceptions.FeignBadRequestException;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
             try (InputStream bodyIs = response.body().asInputStream()) {
                 errorDto = objectMapper.readValue(bodyIs, TransactionErrorDto.class);
             } catch (IOException e) {
-                return new RuntimeException("Failed to process response body", e);
+                return new RuntimeException("Не удалось обработать тело ответа", e);
             }
 
             return new FeignBadRequestException(response.status(), response.reason(), errorDto);

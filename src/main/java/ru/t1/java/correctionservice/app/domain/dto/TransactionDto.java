@@ -1,18 +1,21 @@
-package ru.t1.java.correctionservice.dto;
+package ru.t1.java.correctionservice.app.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ru.t1.java.correctionservice.entity.TransactionError;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
 @ToString
-public class TransactionErrorDto {
+public class TransactionDto {
     private Long accountId;
     private BigDecimal amount;
     private String description;
-    private TransactionError.TransactionType type;
+    private TransactionType type;
+
+    public enum TransactionType {
+        ADD, SUBTRACT, CANCEL
+    }
 }

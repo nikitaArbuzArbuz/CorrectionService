@@ -1,12 +1,12 @@
-package ru.t1.java.correctionservice.mapper;
+package ru.t1.java.correctionservice.app.mapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import ru.t1.java.correctionservice.dto.TransactionErrorDto;
-import ru.t1.java.correctionservice.entity.TransactionError;
+import ru.t1.java.correctionservice.app.domain.dto.TransactionErrorDto;
+import ru.t1.java.correctionservice.app.domain.entity.TransactionError;
 
 @Mapper(componentModel = "spring")
 @Slf4j
