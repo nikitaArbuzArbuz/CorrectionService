@@ -46,3 +46,15 @@ retry:
 
 service:
   client-service: http://localhost:8080/api
+
+logging:
+  level:
+    level:
+      ROOT: DEBUG
+      ru.t1.java: DEBUG
+      org.apache.kafka: INFO
+      org.hibernate.SQL: INFO
+  file:
+    name: logs/logs.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} [%M] - %msg%n"
