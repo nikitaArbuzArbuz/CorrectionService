@@ -32,7 +32,7 @@ public class TransactionServiceTests {
     private TransactionServiceImpl transactionService;
 
     @Test
-    void unblockAccount_shouldSaveTransactionError_onFeignBadRequestException() {
+    void unblockAccountShouldSaveTransactionError() {
         Long transactionId = 1L;
         TransactionErrorDto errorDto = new TransactionErrorDto();
         TransactionError transactionError = new TransactionError();
@@ -48,7 +48,7 @@ public class TransactionServiceTests {
     }
 
     @Test
-    void unblockAccount_shouldHandleDataIntegrityViolationException() {
+    void unblockAccountShouldHandleDataIntegrityViolationException() {
         Long transactionId = 1L;
         TransactionErrorDto errorDto = new TransactionErrorDto();
         TransactionError transactionError = new TransactionError();
